@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.github.cheloide</groupId>
+	<artifactId>telegram-api-common</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>telegram-api-common</name>
+
+
+	<properties>
+		<jackson-annotations.version>2.9.6</jackson-annotations.version>
+		<validation-api>2.0.1.Final</validation-api>
+	</properties>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson-annotations.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${validation-api}</version>
+		</dependency>
+
+	</dependencies>
+</project>
