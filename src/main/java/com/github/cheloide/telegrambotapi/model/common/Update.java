@@ -6,10 +6,10 @@ import com.github.cheloide.telegrambotapi.model.inline.InlineQuery;
 import com.github.cheloide.telegrambotapi.model.payment.PreCheckoutQuery;
 import com.github.cheloide.telegrambotapi.model.payment.ShippingQuery;
 
-public class Update {
+public class Update implements Comparable<Update> {
 
     @JsonProperty("update_id")
-    private int                updateId;
+    private long               updateId;
     @JsonProperty("message")
     private Message            message;
     @JsonProperty("edited_message")
@@ -65,7 +65,7 @@ public class Update {
         return shippingQuery;
     }
 
-    public int getUpdateId() {
+    public long getUpdateId() {
         return updateId;
     }
 
@@ -105,8 +105,16 @@ public class Update {
         this.shippingQuery = shippingQuery;
     }
 
-    public void setUpdateId(int updateId) {
+    public void setUpdateId(long updateId) {
         this.updateId = updateId;
+    }
+
+    @Override
+    public int compareTo(Update o) {
+        if (o != null || o.getUpdateId() == updateId)
+            return 1;
+        else
+            return 0;
     }
 
 }

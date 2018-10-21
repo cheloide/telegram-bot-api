@@ -19,7 +19,7 @@ public class User {
      * True, if this user is a bot
      */
     @JsonProperty("is_bot")
-    private boolean isBot;
+    private boolean bot;
     /**
      * User‘s or bot’s first name
      */
@@ -40,6 +40,14 @@ public class User {
      */
     @JsonProperty("language_code")
     private String  languageCode;
+
+    public boolean isBot() {
+        return bot;
+    }
+
+    public void setBot(boolean bot) {
+        this.bot = bot;
+    }
 
     /**
      * @return the firstName
@@ -74,20 +82,6 @@ public class User {
      */
     public String getUsername() {
         return username;
-    }
-
-    /**
-     * @return the isBot
-     */
-    public boolean isBot() {
-        return isBot;
-    }
-
-    /**
-     * @param isBot the isBot to set
-     */
-    public void setBot(boolean isBot) {
-        this.isBot = isBot;
     }
 
     /**
