@@ -48,18 +48,18 @@ public class TelegramBotApiUpdateServiceImpl implements TelegramBotApiUpdateServ
 
     @Override
     public void startUpdates() {
-        LOGGER.info("Starting updates with {}ms of delay between executions", pollingInterval);
+        LOGGER.debug("Starting updates with {}ms of delay between executions", pollingInterval);
         executor.scheduleAtFixedRate(updater, 0, pollingInterval, TimeUnit.MILLISECONDS);
     }
 
     @Override
     public void stopUpdates() {
-        LOGGER.info("Starting shutdown of executor");
+        LOGGER.trace("Starting shutdown of executor");
         executor.shutdown();
     }
 
     public Update poll() {
-        LOGGER.info("Polling");
+        LOGGER.trace("Polling");
         Update update = null;
         if (lock.tryLock()) {
             try {
@@ -73,6 +73,7 @@ public class TelegramBotApiUpdateServiceImpl implements TelegramBotApiUpdateServ
 
     @Override
     public void flushUpdates() {
+        LOGGER.trace("Clearing update queue");
         updatesQueue.clear();
     }
 }

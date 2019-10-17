@@ -139,7 +139,7 @@ public class TelegramHttpRequestServiceImpl implements TelegramHttpRequestServic
             if (responseCode >= 200 && responseCode < 300) {
                 response = parseHttpResponse(new InputStreamReader(conn.getInputStream()));
                 LOGGER.debug("Response: {}", response);
-            } else if (responseCode >= 400 ) {
+            } else if (responseCode >= 400) {
                 response = parseHttpResponse(new InputStreamReader(conn.getErrorStream()));
                 throw new TelegramBotApiClientException(String.format("Client Error, Server returned code %d, (%s)", responseCode, response));
             }

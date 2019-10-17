@@ -8,22 +8,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Marcelo González
  * @see <a href="https://core.telegram.org/bots/api#inputmediaaudio">https://core.telegram.org/bots/api#inputmediaaudio</a>
  */
-public class InputMediaAudio {
+public class InputMediaAudio extends InputMedia {
 
-    /**
-     * Type of the result, must be audio
-     */
-    @JsonProperty("type")
-    private String  type;
-    /**
-     * File to send. Pass a file_id to send a file that exists on the Telegram
-     * servers (recommended), pass an HTTP URL for Telegram to get a file from the
-     * Internet, or pass “attach://<file_attach_name>” to upload a new one using
-     * multipart/form-data under <file_attach_name> name. More info on Sending Files
-     * »
-     */
-    @JsonProperty("media")
-    private String  media;
     /**
      * or String Optional. Thumbnail of the file sent. The thumbnail should be in
      * JPEG format and less than 200 kB in size. A thumbnail‘s width and height
@@ -35,17 +21,6 @@ public class InputMediaAudio {
      */
     @JsonProperty("thumb")
     private String  thumb;
-    /**
-     * Optional. Caption of the audio to be sent, 0-200 characters
-     */
-    @JsonProperty("caption")
-    private String  caption;
-    /**
-     * Optional. Send Markdown or HTML, if you want Telegram apps to show bold,
-     * italic, fixed-width text or inline URLs in the media caption.
-     */
-    @JsonProperty("parse_mode")
-    private String  parseMode;
     /**
      * Optional. Duration of the audio in seconds
      */
@@ -62,11 +37,8 @@ public class InputMediaAudio {
     @JsonProperty("title")
     private String  title;
 
-    /**
-     * @return the caption
-     */
-    public String getCaption() {
-        return caption;
+    public InputMediaAudio() {
+        super(InputMedia.AUDIO);
     }
 
     /**
@@ -74,20 +46,6 @@ public class InputMediaAudio {
      */
     public Integer getDuration() {
         return duration;
-    }
-
-    /**
-     * @return the media
-     */
-    public String getMedia() {
-        return media;
-    }
-
-    /**
-     * @return the parseMode
-     */
-    public String getParseMode() {
-        return parseMode;
     }
 
     /**
@@ -112,38 +70,10 @@ public class InputMediaAudio {
     }
 
     /**
-     * @return the type
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * @param caption the caption to set
-     */
-    public void setCaption(String caption) {
-        this.caption = caption;
-    }
-
-    /**
      * @param duration the duration to set
      */
     public void setDuration(Integer duration) {
         this.duration = duration;
-    }
-
-    /**
-     * @param media the media to set
-     */
-    public void setMedia(String media) {
-        this.media = media;
-    }
-
-    /**
-     * @param parseMode the parseMode to set
-     */
-    public void setParseMode(String parseMode) {
-        this.parseMode = parseMode;
     }
 
     /**
@@ -165,12 +95,5 @@ public class InputMediaAudio {
      */
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    /**
-     * @param type the type to set
-     */
-    public void setType(String type) {
-        this.type = type;
     }
 }

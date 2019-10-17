@@ -93,7 +93,8 @@ public class TelegramBotApiServiceImpl implements TelegramBotApiService {
         try {
 
             jsonResponse = httpRequestService.get("getMe");
-            response = mapper.readValue(jsonResponse, new TypeReference<Response<User>>() {});
+            response = mapper.readValue(jsonResponse, new TypeReference<Response<User>>() {
+            });
 
         } catch (Exception e) {
             LOGGER.debug("Error getMe: ", e);
@@ -141,9 +142,7 @@ public class TelegramBotApiServiceImpl implements TelegramBotApiService {
         String response;
         try {
             payload = mapper.writeValueAsString(request);
-            System.out.println(payload);
             response = httpRequestService.postJson("sendPhoto", payload);
-            System.out.println(response);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -182,8 +181,17 @@ public class TelegramBotApiServiceImpl implements TelegramBotApiService {
     }
 
     public Response<List<Message>> sendMediaGroup(SendMediaGroupRequest request) {
-        // TODO Auto-generated method stub
-        return null;
+        Response<List<Message>> response = null;
+        try {
+            String payload      = mapper.writeValueAsString(request);
+//            LOGGER.debug("Sending );
+            String jsonResponse = httpRequestService.postJson("sendMediaGroup", payload);
+            response = mapper.readValue(jsonResponse, new TypeReference<Response<List<Message>>>() {
+            });
+        } catch (Exception e) {
+            LOGGER.error("Error calling method sendMediaGroup", e);
+        }
+        return response;
     }
 
     public Response<Message> sendLocation(SendLocationRequest request) {
